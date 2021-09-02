@@ -68,3 +68,57 @@ while running:  # Starting the program.
 
     else:
         validation(choice)
+
+
+
+-----------------------------------------------------------------
+
+# another solution
+
+import re
+from typing import Union
+
+class Telephone_book:
+    telephones_lst = []
+    def name_checker(self, new_name: str) -> bool:
+        checker = lambda name: not not re.fullmatch('[A-Za-z]{2,25}( [A-Za-z]{2,25})?', name)
+        if type(new_name) == str:
+            if len(new_name) >= 3 and checker(new_name):
+                return True
+            else:
+                raise ValueError(f"Invalid name, '{new_name}' is incorrect name.")
+        else:
+            raise ValueError(f"Invalid name, '{new_name} muts be string'")
+
+    def phone_checker(self, new_phone: int) -> bool:
+        if len(str(new_phone)) == 9:
+            return True
+        else:
+            raise ValueError(f"Invalid phone number, '{new_phone}' length must be equal 9.")
+
+    def add_new(self, name: str, phone: int) -> None:
+        if self.name_checker(name) and self.phone_checker(phone):
+            phone_dct = {"name": name,
+                                                                    "phone_number":phone}
+            Telephone_book.telephones_lst.append(phone_dct)
+        else:
+            pass
+
+    def _find(self, value, key: str):
+        filter_lst = filter(lambda dct: dct[key] == value, Telephone_book.telephones_lst)
+        if filter_lst:
+            return list(filter_lst)
+        else:
+            raise Exception(f"'{value}' was not found in the phone book")
+
+    def _by_name(self, name: str) -> dict:
+        return self._find(name, 'name')
+
+    def _by_phone(self, phone: int) -> dict:
+        return self._find(phone, 'phone_number')
+
+    def get(self, value: Union[int, str]) -> Union[int, str]:
+        if type(value) == str:
+            return self._by_name(value)
+        else:
+            return self._by_phone(value)
