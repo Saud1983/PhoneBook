@@ -53,6 +53,8 @@ while running:  # Starting the program.
                    "Enter '@!' for adding a new entry.\n"
                    "Enter '##' to quit.\n ")
 
+
+#choices
     if choice == "@!":
         new_entry()
 
