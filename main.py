@@ -20,18 +20,6 @@ def new_entry():
             add = False
 
 
-def search_number(t_number):
-    """This function is used to reverse the key/value pair so it can print the key when searching by the value"""
-
-    if t_number in phonebook.values():  # A second validation to make sure that the value entry is in the phonebook.
-        reversed_telephone_book = {}  # Temporary container to be used only if the entry was a value not a key.
-        for name, number in phonebook.items():
-            reversed_telephone_book[number] = name  # The value became a key and the key became a value.
-        print(f"{reversed_telephone_book[t_number]}\n")
-    else:
-        print("Sorry, the number is not found\n")
-
-
 def validation(entry):
     """This function is the first validation: used to make sure the entry is a valid number or a correct name"""
 
@@ -44,6 +32,18 @@ def validation(entry):
 
     else:  # If the validation has failed.
         print("This is invalid entry\n")
+
+
+def search_number(t_number):
+    """This function is used to reverse the key/value pair so it can print the key when searching by the value"""
+
+    if t_number in phonebook.values():  # A second validation to make sure that the value entry is in the phonebook.
+        reversed_telephone_book = {}  # Temporary container to be used only if the entry was a value not a key.
+        for name, number in phonebook.items():
+            reversed_telephone_book[number] = name  # The value became a key and the key became a value.
+        print(f"{reversed_telephone_book[t_number]}\n")
+    else:
+        print("Sorry, the number is not found\n")
 
 
 while running:  # Starting the program.
@@ -68,7 +68,3 @@ while running:  # Starting the program.
 
     else:
         validation(choice)
-
-
-
------------------------------------------------------------------
