@@ -23,7 +23,7 @@ def new_entry():
 def validation(entry):
     """This function is the first validation: used to make sure the entry is a valid number or a correct name"""
 
-    search1 = entry.lower().capitalize()  # Search1 is a correct name formatting: used ONLY when the 2nd option is True.
+    search1 = entry.lower().capitalize()  # Search1 is to correct the name formatting: used ONLY when the 2nd option is True.
     if entry.isnumeric() and len(entry) == 10:  # Must be a numeric value with length of 10.
         search_number(int(entry))
 
@@ -35,7 +35,7 @@ def validation(entry):
 
 
 def search_number(t_number):
-    """This function is used to reverse the key/value pair so it can print the key when searching by the value"""
+    """This function is used to reverse the key/value pair so it can print the key when searching by a value"""
 
     if t_number in phonebook.values():  # A second validation to make sure that the value entry is in the phonebook.
         reversed_telephone_book = {}  # Temporary container to be used only if the entry was a value not a key.
