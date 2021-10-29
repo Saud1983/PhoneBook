@@ -68,3 +68,6 @@ while running:  # Starting the program.
 
     else:
         validation(choice)
+
+
+#test The connection between both pcs in Oct 29, 2021
